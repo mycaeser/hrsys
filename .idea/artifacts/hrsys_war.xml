@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hrsys:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="hrsys.war">
+      <element id="artifact" artifact-name="hrsys:war exploded" />
+    </root>
+  </artifact>
+</component>
