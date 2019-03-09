@@ -13,6 +13,7 @@ public interface HouseFundOutDao {
 	List<HouseFundOut> queryHouseFundOutAll();
 	/*
 	 * 根据具体项查询 hr_house_fund_out 
+	 * 只能通过【主键】和【用户编号】查询
 	 */
 	List<HouseFundOut> queryHouseFundOutByTargetItem(@Param("targetItem")HouseFundOut targetItem);
 	/*
@@ -21,6 +22,7 @@ public interface HouseFundOutDao {
 	int insertIntoHouseFundOutByTargetItem(@Param("targetItem")HouseFundOut targetItem);
 	/*
 	 * 更新 hr_house_fund_out 一条记录
+	 * 只能通过主键更新 金额、审核状态、修改时间
 	 */
 	int updateHouseFundOutByTargetItem(@Param("targetItem")HouseFundOut targetItem);
 	/*

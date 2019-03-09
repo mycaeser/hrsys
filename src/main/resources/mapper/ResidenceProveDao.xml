@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advancedc.hrsys.dao.ResidenceProveDao">
+	<select id="queryResidenceProveAll" resultType="com.advancedc.hrsys.entity.ResidenceProveDao">
+		SELECT
+		id,
+		user_id,
+		living_address,
+		permanent_address,
+		prove_address_evidence,
+		created_time,
+		edited_time
+		FROM
+		hr_residence_prove
+	</select>
+	<select id="queryResidenceProveByTargetItem" resultType="com.advancedc.hrsys.entity.ResidenceProveDao">
+		SELECT
+		id,
+		user_id,
+		living_address,
+		permanent_address,
+		prove_address_evidence,
+		created_time,
+		edited_time
+		FROM
+		hr_residence_prove
+		WHERE
+		id = #{targetItem.id}
+	</select>
+	<insert id="insertIntoResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProveDao"
+		useGeneratedKeys="true">
+		INSERT INTO
+		hr_residence_prove(user_id,living_address,permanent_address,
+		prove_address_evidence,created_time,edited_time)
+		VALUES
+		(#{targetItem.userId},#{targetItem.livingAddress},#{targetItem.permanentAddress},
+		proveAddressEvidence,#{targetItem.createdTime},#{targetItem.editedTime})
+	</insert>
+	<update id="updateResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProveDao"
+		>
+		UPDATE hr_residence_prove
+		<set>
+			<if test="targetItem.livingAddress!=null">living_address=#{targetItem.livingAddress},</if>
+			<if test="targetItem.permanentAddress!=null">permanentAddress=#{targetItem.permanentAddress},</if>
+			<if test="targetItem.proveAddressEvidence!=null">prove_address_evidence=#{targetItem.proveAddressEvidence},</if>
+			<if test="targetItem.editedTime!=null">edited_time=#{targetItem.editedTime}</if>
+		</set>
+		WHERE
+		id = #{targetItem.id}	
+	</update>
+	<delete id="deleteResidenceProveByTargetItem">
+		DELETE FROM
+		hr_residence_prove
+		WHERE
+		id = #{targetItem.id}
+	</delete>
+</mapper>
+    

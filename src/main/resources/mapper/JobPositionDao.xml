@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advancedc.hrsys.dao.JobPositionDao">
+	<select id="queryJobPositionAll" resultType="com.advancedc.hrsys.entity.JobPositionDao">
+		SELECT
+		id,
+		name,
+		content,
+		created_time,
+		edited_time
+		FROM
+		hr_job_position
+	</select>
+	<select id="queryJobPositionByTargetItem" resultType="com.advancedc.hrsys.entity.JobPositionDao">
+		SELECT
+		id,
+		name,
+		content,
+		created_time,
+		edited_time
+		FROM
+		hr_job_position
+		WHERE
+		id = #{targetItem.id}
+	</select>
+	<insert id="insertIntoJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPositionDao"
+		useGeneratedKeys="true">
+		INSERT INTO
+		hr_job_position(name,content,created_time,edited_time)
+		VALUES
+		(#{targetItem.name},#{targetItem.content},#{targetItem.createdTime},
+		#{targetItem.editedTime})
+	</insert>
+	<update id="updateJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPositionDao"
+		>
+		UPDATE hr_job_position
+		<set>
+			<if test="targetItem.name!=null">name=#{targetItem.name},</if>
+			<if test="targetItem.content!=null">content=#{targetItem.content},</if>
+			<if test="targetItem.createdTime!=null">created_time=#{targetItem.createdTime},</if>
+			<if test="targetItem.editedTime!=null">edited_time=#{targetItem.editedTime}</if>
+		</set>
+		WHERE
+		id = #{targetItem.id}	
+	</update>
+	<delete id="deleteJobPositionByTargetItem">
+		DELETE FROM
+		hr_job_position
+		WHERE
+		id = #{targetItem.id}
+	</delete>
+</mapper>
+    
