@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advancedc.hrsys.dao.HouseFundOutDao">
+	<select id="queryHouseFundOutAll" resultType="com.advancedc.hrsys.entity.HouseFundOut">
+		SELECT
+		id,
+		user_id,
+		amount,
+		apply_time,
+		confirm_time,
+		reason,
+		is_checked,
+		created_time,
+		edited_time
+		FROM
+		hr_house_fund_out
+	</select>
+	<select id="queryHouseFundOutByTargetItem" resultType="com.advancedc.hrsys.entity.HouseFundOut">
+		SELECT
+		id,
+		user_id,
+		amount,
+		apply_time,
+		confirm_time,
+		reason,
+		is_checked,
+		created_time,
+		edited_time
+		FROM
+		hr_house_fund_out
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</select>
+	<insert id="insertIntoHouseFundOutByTargetItem" parameterType="com.advancedc.hrsys.entity.HouseFundOut"
+		useGeneratedKeys="true">
+		INSERT INTO
+		hr_house_fund_out(user_id,amount,apply_time,
+		confirm_time,reason,is_checked,created_time,
+		edited_time)
+		VALUES
+		(#{targetItem.userId},#{targetItem.amount},#{targetItem.applyTime},
+		#{targetItem.confirmTime},#{targetItem.reason},#{targetItem.isChecked},
+		#{targetItem.createdTime},#{targetItem.editedTime})
+	</insert>
+	<update id="updateHouseFundOutByTargetItem" parameterType="com.advancedc.hrsys.entity.HouseFundOut"
+		>
+		UPDATE hr_house_fund_out
+		<set>
+			<if test="targetItem.amount!=null">amount=#{targetItem.amount},</if>
+			<if test="targetItem.isChecked!=null">is_checked=#{targetItem.isChecked},</if>
+			<if test="targetItem.editedTime!=null">edited_time=#{targetItem.editedTime}</if>
+		</set>
+		WHERE
+		id = #{targetItem.id}
+	</update>
+	<delete id="deleteHouseFundOutByTargetItem">
+		DELETE FROM
+		hr_house_fund_out
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</delete>
+</mapper>
+    

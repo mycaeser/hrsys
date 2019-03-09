@@ -25,30 +25,21 @@ public interface UserInfoDao {
 	List<UserInfo> queryUserInfoBySomeone(@Param("someone")UserInfo someone);
 	/*
 	 * 根据someone的信息插入hr_user_info表
-	 * 例如：
-	 * UserInfo someone=new UserInfo();
-	 * someone.setId(1);//必填
-	 * someone.setName("张三");//必填
-	 * someone.setGender(1);//必填
-	 * someone.setIdCard("343242342432");//非必填
-	 * someone.setIsMarried(1);//非必填
-	 * someone.setDepartmentId(1);//非必填
-	 * someone.setPositionId(1);//非必填
-	 * someone.setPhone("13232323");//非必填
-	 * someone.setPriority(1);//必填
-	 * someone.setEntryTime("2019-3-6");//必填
-	 * someone.setFullTime("2019-3-6");//非必填
-	 * someone.setCreateTime("2019-3-6 00:00")//必填
-	 * someone.setEditedTime("2019-3-6 00:00")//必填
-	 * insertIntoUserInfoBySomeone(someone);
+	 * 
 	 */
 	int insertIntoUserInfoBySomeone(@Param("someone")UserInfo someone);
+	/*
+	 * 根据someone的信息更新一条hr_user_info记录
+	 * 不能修改名字和身份证
+	 */
+	int updateUserInfoBySomeone(@Param("someone")UserInfo someone);
+	/*
+	 * 根据someone的信息更新一条hr_user_info记录
+	 * 通过ID只能修改名字和身份证
+	 */
+	int updateUserInfoBySomeoneOnlyChangeNameOrIDcard(@Param("someone")UserInfo someone);
 	/*
 	 * 根据someone的信息删除一条hr_user_info记录
 	 */
 	int deleteUserInfoBySomeone(@Param("someone")UserInfo someone);
-	/*
-	 * 根据someone的信息更新一条hr_user_info记录
-	 */
-	int updateUserInfoBySomeone(@Param("someone")UserInfo someone);
 }

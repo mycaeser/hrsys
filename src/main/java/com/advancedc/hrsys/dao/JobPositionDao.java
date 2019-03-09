@@ -16,19 +16,19 @@ public interface JobPositionDao {
 	 * 根据具体项 查询 hr_job_position 表
 	 * 只允许根据编号、职位名称 查询
 	 */
-	List<JobPosition> queryJobPositionByAimedItem(@Param("aimedItem") JobPosition aimedItem);
+	List<JobPosition> queryJobPositionByTargetItem(@Param("targetItem") JobPosition targetItem);
 	/*
 	 * 插入 hr_job_position 表一条
 	 */
-	int insertIntoJobPositionByAimedItem(@Param("aimedItem") JobPosition aimedItem);
+	int insertIntoJobPositionByTargetItem(@Param("targetItem") JobPosition targetItem);
 	/*
 	 * 更新 hr_job_position 表一条
 	 * 只允许根据编号更新
 	 */
-	int updateJobPositionByAimedItem(@Param("aimedItem") JobPosition aimedItem);
+	int updateJobPositionByTargetItem(@Param("targetItem") JobPosition targetItem);
 	/*
 	 * 删除 hr_job_position 表一条
 	 * 只允许根据编号删除
 	 */
-	int deleteJobPositionByAimedItem(@Param("aimedItem") JobPosition aimedItem);
+	int deleteJobPositionByTargetItem(@Param("targetItem") JobPosition targetItem);
 }

@@ -110,5 +110,4 @@ public class UserInfo {
 	public void setEditedTime(Timestamp editedTime) {
 		this.editedTime = editedTime;
 	}
-	
 }

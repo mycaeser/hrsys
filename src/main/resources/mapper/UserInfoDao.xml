@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advancedc.hrsys.dao.UserInfoDao">
+	<select id="queryUserInfoAll" resultType="com.advancedc.hrsys.entity.UserInfo">
+		SELECT
+		id,
+		name,
+		gender,
+		id_card,
+		is_married,
+		department_id,
+		position_id,
+		phone,
+		priority,
+		entry_time,
+		full_time,
+		created_time,
+		edited_time
+		FROM
+		hr_user_info
+	</select>
+	<select id="queryUserInfoByRange" resultType="com.advancedc.hrsys.entity.UserInfo">
+		SELECT
+		id,
+		name,
+		gender,
+		id_card,
+		is_married,
+		department_id,
+		position_id,
+		phone,
+		priority,
+		entry_time,
+		full_time,
+		created_time,
+		edited_time
+		FROM
+		hr_user_info
+		LIMIT #{start},#{end};
+	</select>
+	<select id="queryUserInfoBySomeone" resultType="com.advancedc.hrsys.entity.UserInfo">
+		SELECT
+		id,
+		name,
+		gender,
+		id_card,
+		is_married,
+		department_id,
+		position_id,
+		phone,
+		priority,
+		entry_time,
+		full_time,
+		created_time,
+		edited_time
+		FROM
+		hr_user_info
+		<where>
+			<if test="someone.id>0">
+			and id = #{someone.id}
+			</if>
+			<if test="someone.gender!=null">
+			and gender = #{someone.gender}
+			</if>
+			<if test="someone.name!=null">
+			and name = #{someone.name}
+			</if>
+			<if test="someone.idCard!=null">
+			and id_card = #{someone.idCard}
+			</if>
+			<if test="someone.isMarried!=null">
+			and is_married = #{someone.isMarried}
+			</if>
+			<if test="someone.departmentId!=null">
+			and department_id = #{someone.departmentId}
+			</if>
+			<if test="someone.positionId!=null">
+			and position_id = #{someone.positionId}
+			</if>
+			<if test="someone.phone!=null">
+			and phone = #{someone.phone}
+			</if>
+			<if test="someone.entryTime!=null">
+			and entry_time = #{someone.entryTime}
+			</if>
+			<if test="someone.fullTime!=null">
+			and full_time = #{someone.fullTime}
+			</if>
+		</where>
+	</select>
+	<insert id="insertIntoUserInfoBySomeone" parameterType="com.advancedc.hrsys.entity.UserInfo"
+		useGeneratedKeys="true">
+		INSERT INTO
+		hr_user_info(name,gender,id_card,is_married,department_id,position_id,
+		phone,priority,entry_time,full_time,created_time,edited_time)
+		VALUES
+		(#{someone.name},#{someone.gender},#{someone.idCard},
+		#{someone.isMarried},#{someone.departmentId},#{someone.positionId},
+		#{someone.phone},#{someone.priority},#{someone.entryTime},
+		#{someone.fullTime},#{someone.createdTime},#{someone.editedTime})
+	</insert>
+	<update id="updateUserInfoBySomeone" parameterType="com.advancedc.hrsys.entity.UserInfo"
+		>
+		UPDATE hr_user_info
+		<set>
+			<if test="someone.name!= null">name=#{someone.name},</if>
+			<if test="someone.gender!= null">gender=#{someone.gender},</if>
+			<if test="someone.idCard!= null">id_card=#{someone.idCard},</if>
+			<if test="someone.isMarried!= null">is_married=#{someone.isMarried},</if>
+			<if test="someone.departmentId!= null">department_id=#{someone.departmentId},</if>
+			<if test="someone.positionId!= null">position_id=#{someone.positionId},</if>
+			<if test="someone.phone!= null">phone=#{someone.phone},</if>
+			<if test="someone.priority!= null">priority=#{someone.priority},</if>
+			<if test="someone.entryTime!= null">entry_time=#{someone.entryTime},</if>
+			<if test="someone.fullTime!= null">full_time=#{someone.fullTime},</if>
+			<if test="someone.editedTime!= null">edited_time=#{someone.editedTime}</if>
+		</set>
+		<where>
+			<if test="someone.id>0">
+			and id = #{someone.id}
+			</if>
+			<if test="someone.name!=null">
+			and name = #{someone.name}
+			</if>
+			<if test="someone.idCard>0">
+			and id_card = #{someone.idCard}
+			</if>
+		</where>
+	</update>
+	<update id="updateUserInfoBySomeoneOnlyChangeNameOrIDcard" parameterType="com.advancedc.hrsys.entity.UserInfo"
+		>
+		UPDATE hr_user_info
+		<set>
+			<if test="someone.name!= null">name=#{someone.name},</if>
+			<if test="someone.idCard!= null">id_card=#{someone.idCard},</if>
+		</set>
+		WHERE
+		id = #{someone.id}
+	</update>
+	<delete id="deleteUserInfoBySomeone">
+		DELETE FROM
+		hr_user_info
+		<where>
+			<if test="someone.id>0">
+			and id = #{someone.id}
+			</if>
+			<if test="someone.name!=null">
+			and name = #{someone.name}
+			</if>
+			<if test="someone.idCard>0">
+			and id_card = #{someone.idCard}
+			</if>
+		</where>
+	</delete>
+</mapper>
+    
