@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.advancedc.hrsys.dao.JobPositionDao">
-	<select id="queryJobPositionAll" resultType="com.advancedc.hrsys.entity.JobPositionDao">
+	<select id="queryJobPositionAll" resultType="com.advancedc.hrsys.entity.JobPosition">
 		SELECT
 		id,
 		name,
@@ -13,7 +13,7 @@
 		FROM
 		hr_job_position
 	</select>
-	<select id="queryJobPositionByTargetItem" resultType="com.advancedc.hrsys.entity.JobPositionDao">
+	<select id="queryJobPositionByTargetItem" resultType="com.advancedc.hrsys.entity.JobPosition">
 		SELECT
 		id,
 		name,
@@ -25,7 +25,7 @@
 		WHERE
 		id = #{targetItem.id}
 	</select>
-	<insert id="insertIntoJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPositionDao"
+	<insert id="insertIntoJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPosition"
 		useGeneratedKeys="true">
 		INSERT INTO
 		hr_job_position(name,content,created_time,edited_time)
@@ -33,7 +33,7 @@
 		(#{targetItem.name},#{targetItem.content},#{targetItem.createdTime},
 		#{targetItem.editedTime})
 	</insert>
-	<update id="updateJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPositionDao"
+	<update id="updateJobPositionByTargetItem" parameterType="com.advancedc.hrsys.entity.JobPosition"
 		>
 		UPDATE hr_job_position
 		<set>

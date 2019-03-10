@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advancedc.hrsys.dao.RecordOutDao">
+	<select id="queryRecordOutDaoAll" resultType="com.advancedc.hrsys.entity.RecordOut">
+		SELECT
+		id,
+		user_id,
+		describe_string,
+		type_string,
+		reason_string,
+		created_time,
+		edited_time
+		FROM
+		hr_record_out
+	</select>
+	<select id="queryRecordOutDaoByTargetItem" resultType="com.advancedc.hrsys.entity.RecordOut">
+		SELECT
+		id,
+		user_id,
+		describe_string,
+		type_string,
+		reason_string,
+		created_time,
+		edited_time
+		FROM
+		hr_record_out
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</select>
+	<insert id="insertIntoRecordOutByTargetItem" parameterType="com.advancedc.hrsys.entity.RecordOut"
+		useGeneratedKeys="true">
+		INSERT INTO
+		hr_record_out(user_id,describe_string,type_string,reason_string,
+		created_time,edited_time)
+		VALUES
+		(#{targetItem.userId},#{targetItem.describeString},#{targetItem.typeString},
+		#{targetItem.reasonString},#{targetItem.createdTime},#{targetItem.editedTime})
+	</insert>
+	<update id="updateRecordOutByTargetItem" parameterType="com.advancedc.hrsys.entity.RecordOut"
+		>
+		UPDATE hr_record_out
+		<set>
+			<if test="targetItem.describeString!=null">describe_string=#{targetItem.describeString},</if>
+			<if test="targetItem.typeString!=null">type_string=#{targetItem.typeString},</if>
+			<if test="targetItem.reasonString!=null">reason_string=#{targetItem.reasonString},</if>
+			<if test="targetItem.createdTime!=null">created_time=#{targetItem.createdTime},</if>
+			<if test="targetItem.editedTime!=null">edited_time=#{targetItem.editedTime}</if>
+		</set>
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</update>
+	<delete id="deleteRecordOutByTargetItem">
+		DELETE FROM
+		hr_record_out
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</delete>
+</mapper>
+    

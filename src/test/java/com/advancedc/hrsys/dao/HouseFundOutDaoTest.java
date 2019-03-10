@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-import org.bouncycastle.jcajce.provider.asymmetric.ec.SignatureSpi.ecCVCDSA;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

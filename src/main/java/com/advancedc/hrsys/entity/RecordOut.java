@@ -8,11 +8,11 @@ public class RecordOut {
 	//所属用户编号
 	private long userId;
 	//档案描述
-	private String describe;
+	private String describeString;
 	//档案类型
-	private String type;
+	private String typeString;
 	//档案操作原因
-	private String reason;
+	private String reasonString;
 	//创建时间
 	private Timestamp createdTime;
 	//修改时间
@@ -29,23 +29,23 @@ public class RecordOut {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public String getDescribe() {
-		return describe;
+	public String getDescribeString() {
+		return describeString;
 	}
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setDescribeString(String describeString) {
+		this.describeString = describeString;
 	}
-	public String getType() {
-		return type;
+	public String getTypeString() {
+		return typeString;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeString(String typeString) {
+		this.typeString = typeString;
 	}
-	public String getReason() {
-		return reason;
+	public String getReasonString() {
+		return reasonString;
 	}
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setReasonString(String reasonString) {
+		this.reasonString = reasonString;
 	}
 	public Timestamp getCreatedTime() {
 		return createdTime;

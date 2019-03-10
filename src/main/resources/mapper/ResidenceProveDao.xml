@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.advancedc.hrsys.dao.ResidenceProveDao">
-	<select id="queryResidenceProveAll" resultType="com.advancedc.hrsys.entity.ResidenceProveDao">
+	<select id="queryResidenceProveAll" resultType="com.advancedc.hrsys.entity.ResidenceProve">
 		SELECT
 		id,
 		user_id,
@@ -15,7 +15,7 @@
 		FROM
 		hr_residence_prove
 	</select>
-	<select id="queryResidenceProveByTargetItem" resultType="com.advancedc.hrsys.entity.ResidenceProveDao">
+	<select id="queryResidenceProveByTargetItem" resultType="com.advancedc.hrsys.entity.ResidenceProve">
 		SELECT
 		id,
 		user_id,
@@ -29,21 +29,21 @@
 		WHERE
 		id = #{targetItem.id}
 	</select>
-	<insert id="insertIntoResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProveDao"
+	<insert id="insertIntoResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProve"
 		useGeneratedKeys="true">
 		INSERT INTO
 		hr_residence_prove(user_id,living_address,permanent_address,
 		prove_address_evidence,created_time,edited_time)
 		VALUES
 		(#{targetItem.userId},#{targetItem.livingAddress},#{targetItem.permanentAddress},
-		proveAddressEvidence,#{targetItem.createdTime},#{targetItem.editedTime})
+		#{targetItem.proveAddressEvidence},#{targetItem.createdTime},#{targetItem.editedTime})
 	</insert>
-	<update id="updateResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProveDao"
+	<update id="updateResidenceProveByTargetItem" parameterType="com.advancedc.hrsys.entity.ResidenceProve"
 		>
 		UPDATE hr_residence_prove
 		<set>
 			<if test="targetItem.livingAddress!=null">living_address=#{targetItem.livingAddress},</if>
-			<if test="targetItem.permanentAddress!=null">permanentAddress=#{targetItem.permanentAddress},</if>
+			<if test="targetItem.permanentAddress!=null">permanent_address=#{targetItem.permanentAddress},</if>
 			<if test="targetItem.proveAddressEvidence!=null">prove_address_evidence=#{targetItem.proveAddressEvidence},</if>
 			<if test="targetItem.editedTime!=null">edited_time=#{targetItem.editedTime}</if>
 		</set>

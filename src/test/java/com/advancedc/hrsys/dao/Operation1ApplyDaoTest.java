@@ -16,7 +16,7 @@ public class Operation1ApplyDaoTest extends BaseTest{
 	private Operation1ApplyDao operation1ApplyDao;
 	
 	@Test
-	@Ignore
+	
 	public void testSelectDao() {
 		List<Operation1Apply> operation1ApplyList=operation1ApplyDao.queryOperation1ApplyAll();
 		for(int i=0;i<operation1ApplyList.size();i++) {
@@ -61,6 +61,7 @@ public class Operation1ApplyDaoTest extends BaseTest{
 		System.out.println(effecdNum);
 	}
 	@Test
+	@Ignore
 	public void testDeleteDao() {
 		Operation1Apply targetItem=new Operation1Apply();
 		targetItem.setId(5L);
