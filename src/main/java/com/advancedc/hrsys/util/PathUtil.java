@@ -10,7 +10,7 @@ public class PathUtil {
 		String os = System.getProperty("os.name");
 		String basePath = "";
 		if (os.toLowerCase().startsWith("win")) {
-			basePath = "D:/gxttccimg/v1/";
+			basePath = "D:/hrsys/v1/";
 		} else {
 			basePath = "/home/roofso/image/";
 		}
@@ -18,6 +18,18 @@ public class PathUtil {
 		return basePath;
 	}
 
+	public static String getLogBasePath() {
+
+		String os = System.getProperty("os.name");
+		String basePath = "";
+		if (os.toLowerCase().startsWith("win")) {
+			basePath = "D:/hrsys/log/";
+		} else {
+			basePath = "/home/roofso/log/";
+		}
+		basePath = basePath.replace("/", seperator);
+		return basePath;
+	}
 	public static String getShopImagePath(long shopId) {
 		String imagePath = "/upload/item/shop/" + shopId + "/";
 		//return imagePath.replace("/", seperator);
