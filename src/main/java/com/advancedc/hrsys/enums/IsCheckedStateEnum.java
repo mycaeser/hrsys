@@ -2,7 +2,7 @@ package com.advancedc.hrsys.enums;
 
 
 public enum IsCheckedStateEnum {
-	CHECKING(1, "审核中"),FAIL(2, "审核中"),PASS(3, "审核通过");
+	CHECKING(1, "审核中"),FAIL(2, "审核不通过"),PASS(3, "审核通过");
 	
 	private int state;
 

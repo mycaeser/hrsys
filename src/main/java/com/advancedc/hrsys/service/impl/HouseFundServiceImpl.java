@@ -1,5 +1,7 @@
 package com.advancedc.hrsys.service.impl;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.advancedc.hrsys.dao.HouseFundDao;
 import com.advancedc.hrsys.entity.HouseFund;
+import com.advancedc.hrsys.enums.IsCheckedStateEnum;
 import com.advancedc.hrsys.service.HouseFundService;
 
 @Service
@@ -66,8 +69,11 @@ public class HouseFundServiceImpl implements HouseFundService{
 	@Override
 	public boolean updateHouseFundPass(long id) {
 		HouseFund targetItem=new HouseFund();
+		Date aimTDate = new Date();
+		Timestamp editedTime = new Timestamp(aimTDate.getTime());
 		targetItem.setId(id);
-		targetItem.setIsChecked(1);
+		targetItem.setIsChecked(IsCheckedStateEnum.PASS.getState());
+		targetItem.setEditedTime(editedTime);
 		int effectedNum=houseFundDao.updateHouseFundByTargetItem(targetItem);
 		return effectedNum > 0 ? true:false;
 	}
