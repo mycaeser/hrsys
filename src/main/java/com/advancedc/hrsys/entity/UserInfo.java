@@ -15,9 +15,9 @@ public class UserInfo {
 	//是否结婚
 	private Integer isMarried;
 	//部门编号
-	private Integer departmentId;
+	//private Integer departmentId;
 	//职位编号
-	private Integer positionId;
+	//private Integer positionId;
 	//电话号码
 	private String phone;
 	//权限编号
@@ -32,7 +32,23 @@ public class UserInfo {
 	private Timestamp editedTime;
 	//
 	private JobDepartment jobDepartment;
+	//
+	private JobPosition jobPosition;
 	
+	
+	
+	public JobDepartment getJobDepartment() {
+		return jobDepartment;
+	}
+	public void setJobDepartment(JobDepartment jobDepartment) {
+		this.jobDepartment = jobDepartment;
+	}
+	public JobPosition getJobPosition() {
+		return jobPosition;
+	}
+	public void setJobPosition(JobPosition jobPosition) {
+		this.jobPosition = jobPosition;
+	}
 	public long getId() {
 		return id;
 	}
@@ -63,18 +79,9 @@ public class UserInfo {
 	public void setIsMarried(Integer isMarried) {
 		this.isMarried = isMarried;
 	}
-	public Integer getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(Integer departmentId) {
-		this.departmentId = departmentId;
-	}
-	public Integer getPositionId() {
-		return positionId;
-	}
-	public void setPositionId(Integer positionId) {
-		this.positionId = positionId;
-	}
+	
+	
+	
 	public String getPhone() {
 		return phone;
 	}

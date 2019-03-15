@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class JobPosition {
 	//职位编号
-	private long id;
+	private long positionId;
 	//职位名称
 	private String name;
 	//职位简介
@@ -14,11 +14,11 @@ public class JobPosition {
 	//修改时间
 	private Timestamp editedTime;
 	
-	public long getId() {
-		return id;
+	public long getPositionId() {
+		return positionId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setPositionId(long positionId) {
+		this.positionId = positionId;
 	}
 	public String getName() {
 		return name;

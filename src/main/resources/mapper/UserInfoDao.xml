@@ -3,6 +3,29 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.advancedc.hrsys.dao.UserInfoDao">
+	<resultMap id="userInfoMap" type="com.advancedc.hrsys.entity.UserInfo">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="gender" property="gender" />
+		<result column="id_card" property="idCard" />
+		<result column="is_married" property="isMarried" />
+		<result column="phone" property="phone" />
+		<result column="prioriy" property="priority" />
+		<result column="entry_time" property="entryTime" />
+		<result column="full_time" property="fullTime" />
+		<result column="created_time" property="createdTime" />
+		<result column="edited_time" property="editedTime" />
+		<association property="jobDepartment" column="department_id"
+			javaType="com.advancedc.hrsys.entity.JobDepartment">
+			<id column="department_id" property="id" />
+			<result column="name" property="name" />
+		</association>
+		<association property="jobPosition" column="position_id"
+			javaType="com.advancedc.hrsys.entity.JobPosition">
+			<id column="department_id" property="id" />
+			<result column="name" property="name" />
+		</association>
+	</resultMap>
 	<select id="queryUserInfoAll" resultType="com.advancedc.hrsys.entity.UserInfo">
 		SELECT
 		id,

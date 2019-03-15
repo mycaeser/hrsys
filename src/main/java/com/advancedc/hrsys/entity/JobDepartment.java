@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class JobDepartment {
 	//部门编号
-	private long id;
+	private long departmentId;
 	//部门名称
 	private String name;
 	//部门职能介绍
@@ -14,11 +14,11 @@ public class JobDepartment {
 	//修改时间
 	private Timestamp editedTime;
 	
-	public long getId() {
-		return id;
+	public long getdepartmentId() {
+		return departmentId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setdepartmentId(long departmentId) {
+		this.departmentId = departmentId;
 	}
 	public String getName() {
 		return name;
