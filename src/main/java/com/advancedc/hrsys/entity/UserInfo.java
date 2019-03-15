@@ -30,7 +30,8 @@ public class UserInfo {
 	private Timestamp createdTime;
 	//修改时间
 	private Timestamp editedTime;
-	
+	//
+	private JobDepartment jobDepartment;
 	
 	public long getId() {
 		return id;
